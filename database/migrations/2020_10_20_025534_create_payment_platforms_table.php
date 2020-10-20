@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlaymentPlatformsTable extends Migration
+class CreatePaymentPlatformsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePlaymentPlatformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('playment_platforms', function (Blueprint $table) {
+        Schema::create('payment_platforms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50);
             $table->string('image');
