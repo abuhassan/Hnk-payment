@@ -20,6 +20,8 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @stack('styles')
 </head>
 <body>
     <div id="app">
@@ -77,11 +79,36 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
+                @if (isset($errors) && $errors->any())
+                    <div class="alert alert-danger" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <ul>
+                            @foreach (session()->get('success') as $message)
+                                <li>{{ $essage }}</li>
+                            @endforeach
+                        </ul>
+                        {{ session('status') }}
+                    </div>
+                @endif
+            </div>
+
+
             @yield('content')
         </main>
     </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity=
     "sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 
@@ -90,5 +117,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity=
     "sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
+    @stack('scripts')
 </body>
 </html>
