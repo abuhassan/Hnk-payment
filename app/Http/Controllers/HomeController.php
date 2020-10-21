@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Currency;
+use App\Models\PaymentPlatform;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,11 @@ class HomeController extends Controller
     {
         $currencies = Currency::all();
 
+        $paymentPlatforms = PaymentPlatform::all();
+
         return view('home')->with([
             'currencies' => $currencies,
+            'paymentPlatforms' => $paymentPlatforms,
         ]);
     }
 }
