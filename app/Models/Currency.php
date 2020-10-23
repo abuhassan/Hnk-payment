@@ -9,7 +9,7 @@ class Currency extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'iso';
 
     public $incrementing = false;
 

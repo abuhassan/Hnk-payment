@@ -17,7 +17,7 @@ class PaymentController extends Controller
     }
 
     /**
-     * Obtain a payment details
+     * Obtain a payment details.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -43,5 +43,4 @@ class PaymentController extends Controller
     {
         //
     }
-
 }
