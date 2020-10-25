@@ -58,7 +58,15 @@ class StripeService
                 'currency' => strtolower($currency),
                 'payment_method' => $paymentMethod,
                 'confirmation_method' => 'manual',
-            ]
+            ],
+        );
+    }
+
+    public function confirmPayment($paymentIntentId)
+    {
+        return $this->makeRequest(
+            'POST',
+            "/v1/payment_intents/{$paymentIntentId}/confirm",
         );
     }
 
